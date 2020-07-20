@@ -16,6 +16,16 @@ pipeline {
                 sh "mvn test"
             }
         }
+        stage("echo"){
+            steps{
+                sh "pwd"
+            }
+        }
+        stage("ls"){
+            steps {
+                sh "ls"
+            }
+        }
     }
 
 }
