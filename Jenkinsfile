@@ -28,6 +28,11 @@ pipeline {
                 }
             }
             stages{
+                stage("pwd"){
+                    steps{
+                        sh 'pwd'
+                    }
+                }
                 stage("show"){
                     steps{
                         sh 'curl http://localhost:10000/start '
