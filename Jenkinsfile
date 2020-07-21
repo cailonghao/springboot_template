@@ -30,7 +30,7 @@ pipeline {
             stages{
                 stage("pwd"){
                     steps{
-                        sh 'pwd'
+                        sh 'echo $pwd'
                     }
                 }
                 stage("show"){
