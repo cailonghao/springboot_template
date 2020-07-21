@@ -1,8 +1,5 @@
 pipeline {
     agent none
-    environment{
-        BASEURL = "/usr/local/src/gocd/jenkins/workspace/${JOB_NAME}"
-    }
     stages{
         stage("test"){
             agent{
@@ -28,7 +25,6 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    additionalBuildArgs "--build-arg JARPATH=${BASEURL}/target"
                 }
             }
             stages{
