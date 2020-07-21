@@ -28,7 +28,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    additionalBuildArgs "--build-arg jarpath=${BASEURL}/target"
+                    additionalBuildArgs "--build-arg JARPATH=${BASEURL}/target"
                 }
             }
             stages{
