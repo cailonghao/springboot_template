@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    environment{
+        BASEURL = "/usr/local/src/gocd/jenkins/workspace/${JOB_NAME}"
+    }
     stages{
         stage("test"){
             agent{
@@ -7,14 +10,14 @@ pipeline {
                     image 'maven:3.6.0-alpine'
                     args '-v /root/.m2:/root/.m2'
                 }
-                }
-                stages{
-                    stage('build'){
-                        steps {
+            }
+            stages{
+                stage('build'){
+                     steps {
                             sh 'mvn -B -DskipTests clean package'
                         }
-                    }
-                    stage('test'){
+                }
+                 stage('test'){
                         steps{
                             sh 'mvn test'
                         }
@@ -23,7 +26,10 @@ pipeline {
             }
         stage("install"){
             agent {
-                dockerfile true
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs "--build-arg jarpath=${BASEURL}/target"
+                }
             }
             stages{
                 stage("show"){
