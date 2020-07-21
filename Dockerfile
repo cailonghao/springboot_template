@@ -5,3 +5,5 @@ WORKDIR /usr/local/src/boot
 EXPOSE 10000
 
 ADD target/*.jar app.jar
+
+CMD ["java -jar app.jar"]
