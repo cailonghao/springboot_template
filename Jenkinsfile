@@ -23,7 +23,7 @@ pipeline {
         }
         stage("install") {
             agent {
-                node("gaoshi") {
+                node() {
                     checkout scm
                     def customImage = docker.build("my_image:${env.BUILD_ID}")
                     customImage.push()
