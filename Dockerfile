@@ -6,4 +6,4 @@ EXPOSE 10000
 
 ADD target/*.jar app.jar
 
-CMD ["java -jar /usr/local/src/boot/app.jar"]
+CMD ["java","-jar","/usr/local/src/boot/app.jar"]
