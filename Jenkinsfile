@@ -22,12 +22,15 @@ pipeline {
             }
         }
         stage("install") {
-            agent{
+            agent {
                 dockerfile true
             }
+            steps {
+                echo "$PWD"
+            }
         }
-        stage("show"){
-            steps{
+        stage("show") {
+            steps {
                 echo "${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
