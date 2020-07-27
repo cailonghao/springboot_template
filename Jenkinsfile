@@ -27,12 +27,8 @@ pipeline {
                     filename 'Dockerfile'
                 }
             }
-            stages{
-                stage("pwd"){
-                    steps{
-                        sh 'echo $PWD'
-                    }
-                }
+            steps{
+                sh "java -version"
             }
         }
 
