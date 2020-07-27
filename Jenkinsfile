@@ -22,10 +22,13 @@ pipeline {
             }
         }
         stage("install") {
-            node {
-                checkout scm
-                def customImage = docker.build("my_image:${env.BUILD_ID}")
-                customImage.push()
+            agent{
+                dockerfile true
+            }
+        }
+        stage("show"){
+            steps{
+                echo "${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
     }
