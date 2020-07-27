@@ -32,6 +32,7 @@ pipeline {
         stage("show") {
             steps {
                 echo "${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo "${env.BUILD_TAG} on ${env.BUILD_NUMBER}"
             }
         }
     }
