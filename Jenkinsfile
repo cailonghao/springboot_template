@@ -32,6 +32,7 @@ pipeline {
             }
         }
         stage("show") {
+            agent none
             steps {
                 sh "docker -v"
             }
