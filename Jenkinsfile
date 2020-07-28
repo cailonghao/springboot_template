@@ -31,15 +31,9 @@ pipeline {
                 echo "$PWD"
             }
         }
-        stage("show") {
-            agent {
-                docker{
-                    image "myapp:${env.BUILD_NUMBER}"
-                    args '-p 10000:10000 --name startApp '
-                }
-            }
+        stage("deploy") {
             steps {
-                sh "java -version"
+                sh "docker run -d --name mytest -p 10000:10000 myapp:${env.BUILD_NUMBER}"
             }
         }
     }
