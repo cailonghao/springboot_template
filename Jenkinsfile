@@ -23,7 +23,10 @@ pipeline {
         }
         stage("install") {
             agent {
-                dockerfile true
+                dockerfile {
+                    label 'myApp'
+                    additionalBuildArgs '--build-arg version=1.0.2'
+                }
             }
             steps {
                 echo "$PWD"
