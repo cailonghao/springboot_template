@@ -33,7 +33,7 @@ pipeline {
         }
         stage("deploy") {
             steps {
-                sh "docker run -d --name mytest -p 10000:10000 myapp:${env.BUILD_NUMBER}"
+                sh "curl "
             }
         }
     }
