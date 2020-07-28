@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage("test") {
             agent {
@@ -33,7 +33,7 @@ pipeline {
         }
         stage("deploy") {
             steps {
-                sh "curl "
+                sh "docker images"
             }
         }
     }
