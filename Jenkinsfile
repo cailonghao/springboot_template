@@ -24,7 +24,7 @@ pipeline {
         stage("install") {
             agent {
                 dockerfile {
-                    additionalBuildArgs " -t myapp:${env.BUILD_TAG} --build-arg version=1.0.2"
+                    additionalBuildArgs " -t myapp:${env.BUILD_NUMBER} --build-arg version=1.0.2"
                 }
             }
             steps {
@@ -32,9 +32,14 @@ pipeline {
             }
         }
         stage("show") {
-            agent none
+            agent {
+                docker{
+                    image 'myapp:${env.BUILD_NUMBER}'
+                    args '-p 10000:10000 --name startApp '
+                }
+            }
             steps {
-                sh "docker -v"
+                sh "java -version"
             }
         }
     }
