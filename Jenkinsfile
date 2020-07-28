@@ -24,7 +24,7 @@ pipeline {
         stage("install") {
             agent {
                 dockerfile {
-                    additionalBuildArgs ' -t myapp --build-arg version=1.0.2'
+                    additionalBuildArgs " -t myapp:${env.BUILD_TAG} --build-arg version=1.0.2"
                 }
             }
             steps {
@@ -33,8 +33,7 @@ pipeline {
         }
         stage("show") {
             steps {
-                echo "${env.BUILD_ID} on ${env.JENKINS_URL}"
-                echo "${env.BUILD_TAG} on ${env.BUILD_NUMBER}"
+                sh "docker -v"
             }
         }
     }
