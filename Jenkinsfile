@@ -24,8 +24,7 @@ pipeline {
         stage("install") {
             agent {
                 dockerfile {
-                    label 'myApp'
-                    additionalBuildArgs '--build-arg version=1.0.2'
+                    additionalBuildArgs ' -t myapp --build-arg version=1.0.2'
                 }
             }
             steps {
