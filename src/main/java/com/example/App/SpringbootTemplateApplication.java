@@ -18,4 +18,9 @@ public class SpringbootTemplateApplication {
         return "receive start message";
     }
 
+    @RequestMapping("/change")
+    public String change(){
+        return "receive start message";
+    }
+
 }
