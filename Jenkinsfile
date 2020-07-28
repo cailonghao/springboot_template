@@ -30,11 +30,20 @@ pipeline {
             steps {
                 echo "$PWD"
             }
+
         }
         stage("deploy") {
             steps {
-                sh "docker images"
+                sh "docker run -d --name myapp_${env.BUILD_NUMBER} -p 10000:10000 myapp:${env.BUILD_NUMBER}"
             }
+        }
+    }
+    post {
+        success {
+            sh "docker images"
+        }
+        failure {
+            sh "docker rmi myapp:${env.BUILD_NUMBER}"
         }
     }
 }
