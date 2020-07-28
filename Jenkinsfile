@@ -34,7 +34,7 @@ pipeline {
         stage("show") {
             agent {
                 docker{
-                    image 'myapp:${env.BUILD_NUMBER}'
+                    image "myapp:${env.BUILD_NUMBER}"
                     args '-p 10000:10000 --name startApp '
                 }
             }
