@@ -23,4 +23,9 @@ public class SpringbootTemplateApplication {
         return "receive start message";
     }
 
+    @RequestMapping("/hehe")
+    public String hehe(){
+        return "receive start message";
+    }
+
 }
